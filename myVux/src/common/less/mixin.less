@@ -1,0 +1,169 @@
+/**
+* f: font
+* d: dark
+* l: light
+* b: border
+*/
+@red: #F04655;
+@blue: #5B62CD;
+@l-blue: #A0A4C9;
+@f-d-black: #3C3C5E;
+@f-d-gray: #82859A;
+@f-l-gray: #A0AABD;
+@b-l-gray: #EEEEEE;
+@b-d-gray: #D2D2D2;
+@bg: #F6F6F6; /* 背景色 */
+/*
+* 上边框1px
+*/
+.border-1px(@color: #D2D2D2){
+  position: relative;
+  &:after{
+    content: " ";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 1px;
+    border-bottom: 1px solid @color;
+    color: @color;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+  }
+  @media (-webkit-min-device-pixel-ratio: 2),(min-device-pixel-ratio: 2) {
+    &:after{
+      content: " ";
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      right: 0;
+      height: 1px;
+      border-bottom: 1px solid @color;
+      color: @color;
+      -webkit-transform-origin: 0 0;
+      transform-origin: 0 0;
+      -webkit-transform: scaleY(0.5);
+      transform: scaleY(0.5);
+    }
+  }
+}
+/*
+* 下边框1px
+*/
+.border-1px-top(@color: #D2D2D2){
+  position: relative;
+  &:after{
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 1px;
+    border-top: 1px solid @color;
+    color: @color;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+  }
+  @media (-webkit-min-device-pixel-ratio: 2),(min-device-pixel-ratio: 2) {
+    &:after{
+      content: " ";
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      height: 1px;
+      border-top: 1px solid @color;
+      color: @color;
+      -webkit-transform-origin: 0 0;
+      transform-origin: 0 0;
+      -webkit-transform: scaleY(0.5);
+      transform: scaleY(0.5);
+    }
+  }
+}
+.border-none(){
+  &:after {
+    display: none;
+  }
+}
+/*
+* right-arrow 右侧箭头
+*/
+.fs-right-arrow{
+  content: " ";
+  display: inline-block;
+  height: 6px;
+  width: 6px;
+  border-width: 2px 2px 0 0;
+  border-color: #C8C8CD;
+  border-style: solid;
+  -webkit-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+  transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+  position: absolute;
+  top: 50%;
+  margin-top: -4px;
+  right: 13px;
+}
+/*
+* 修复安卓 position: fixed; 的bug
+*/
+@media screen and (max-height: 400px) {
+  .fs-fixed-hidden{
+    display: none;
+  }
+}
+
+/*
+* banner, button 等渐变色
+*/
+.bgimg-base-t-b(@orange: #F04655,@l-red: #F04655){
+  background-image: -webkit-linear-gradient(top,@orange ,@l-red);
+  background-image: -o-linear-gradient(top,@orange ,@l-red);
+  background-image: -moz-linear-gradient(top,@orange ,@l-red);
+  background-image: linear-gradient(to top,@orange ,@l-red);
+}
+.bg(@url){
+  background-image: url(".@{url}@2x.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  @media (-webkit-min-device-pixel-ratio: 3),(min-device-pixel-ratio: 3) {
+    background-image: url(".@{url}@3x.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+}
+//  多加了个jpg 的 给InitLogin页面
+.bg_jpg(@url){
+  background-image: url(".@{url}@1x.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  @media (-webkit-min-device-pixel-ratio: 2),(min-device-pixel-ratio: 2) {
+    background-image: url(".@{url}@2x.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  @media (-webkit-min-device-pixel-ratio: 3),(min-device-pixel-ratio: 3) {
+    background-image: url(".@{url}@3x.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+
+// input::-webkit-input-placeholder{ 
+//   color: transparent !important; 
+// }
+// input:-moz-placeholder {
+//   color: transparent !important;
+// } /* Firefox 18- */
+// input::-moz-placeholder {
+//   color: transparent !important;
+// } /* Firefox 19+ */
+// input:-ms-input-placeholder {
+//   color: transparent !important;
+// } /* oldIE ;) */
+
+input:focus::-webkit-input-placeholder { color:transparent; }
+input:focus:-moz-placeholder { color:transparent; } /* Firefox 18- */
+input:focus::-moz-placeholder { color:transparent; } /* Firefox 19+ */
+input:focus:-ms-input-placeholder { color:transparent; } /* oldIE ;) */
